@@ -208,7 +208,23 @@ h2{background:linear-gradient(var(--cel),var(--cel)) left bottom/0 3px no-repeat
 <p class="nota">La muestra es pequeña y por conveniencia, por lo que los resultados describen tendencias de este grupo y no representan a todos los desarrolladores del país.</p>
 </div></section>
 
-<footer><div class="wrap">Investigación sobre ciberseguridad y protección legal del desarrollador en Guatemala. Los datos de la encuesta se leen en vivo desde Google Sheets.</div></footer>
+<footer><div class="wrap">
+<h5 style="margin:0 0 14px;color:#fff;font-size:1.05rem;font-family:var(--serif)">Integrantes</h5>
+<ul class="eq">
+<li><b>Juan Cortés</b><span>1530623</span></li>
+<li><b>Allan Chaclán</b><span>1502023</span></li>
+<li><b>Vyncen Lara</b><span>1615823</span></li>
+<li><b>Fernando Contreras</b><span>1631023</span></li>
+<li><b>Diego Afre</b><span>1594422</span></li>
+</ul>
+<p style="margin-top:26px;color:#8FA1B0">Investigación sobre ciberseguridad y protección legal del desarrollador en Guatemala. Los datos de la encuesta se leen en vivo desde Google Sheets.</p>
+</div></footer>
+<style>
+.eq{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.eq li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 16px;transition:transform .3s,background .3s,border-color .3s}
+.eq li:hover{transform:translateY(-3px);background:rgba(255,255,255,.12);border-color:#7FBBE6}
+.eq b{display:block;color:#fff;font-weight:600}.eq span{font-size:.82rem;color:#9FC6E3}
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
