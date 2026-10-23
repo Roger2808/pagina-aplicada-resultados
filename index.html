@@ -60,14 +60,52 @@ ul.lista{padding-left:20px}ul.lista li{margin:.45em 0}ul.lista li::marker{color:
 footer{background:var(--osc);color:#C9D4DD;padding:40px 0;font-size:.9rem}
 .oculto{display:none!important}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root[data-theme=dark]{--cel:#6FB3E3;--osc:#0B1B2B;--claro:#17293A;--verde:#4CC38A;--tinta:#E6EDF3;--gris:#9FB0BE;--linea:#26394A;--bg:#0E1A26;--sf:#142333}
+body{transition:background .5s,color .5s}
+#prog{position:fixed;top:0;left:0;height:4px;width:0;z-index:20;background:linear-gradient(90deg,var(--cel),var(--maiz),var(--verde))}
+nav a{transition:background .25s,color .25s}nav a.on{background:var(--cel);color:#fff}
+.tm{margin-left:auto;border:0;background:var(--claro);color:var(--cel);width:34px;height:34px;border-radius:50%;cursor:pointer;flex:none;font-size:1rem;transition:transform .5s}.tm:hover{transform:rotate(180deg)}
+header.hero{overflow:hidden;background-size:220% 220%;animation:fl 16s ease infinite}
+@keyframes fl{0%,100%{background-position:0 0}50%{background-position:100% 100%}}
+.blob{position:absolute;border-radius:50%;filter:blur(50px);transition:transform .5s ease-out;animation:fw 9s ease-in-out infinite alternate}
+.b1{width:340px;height:340px;background:#7FBBE6;top:-80px;right:-60px;opacity:.5}.b2{width:260px;height:260px;background:var(--maiz);bottom:-90px;left:8%;opacity:.3;animation-delay:-3s}.b3{width:200px;height:200px;background:#fff;top:38%;left:58%;opacity:.14;animation-delay:-6s}
+@keyframes fw{to{margin-top:28px;margin-left:-22px}}
+header.hero .wrap{position:relative;z-index:1}
+h1 .w{display:inline-block;opacity:0;transform:translateY(34px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.pregunta{animation:up 1s .7s both}.stats>div{animation:up 1s both}.stats>div:nth-child(1){animation-delay:.9s}.stats>div:nth-child(2){animation-delay:1s}.stats>div:nth-child(3){animation-delay:1.1s}.stats>div:nth-child(4){animation-delay:1.2s}
+.rev{opacity:0;translate:0 28px;transition:opacity .7s var(--d,0ms),translate .8s var(--d,0ms) cubic-bezier(.2,.8,.2,1)}.rev.on{opacity:1;translate:0 0}
+.card{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));transition:transform .25s,box-shadow .3s,border-color .3s,opacity .3s,scale .3s}
+.card:hover{box-shadow:0 18px 40px rgba(18,57,90,.18);border-color:var(--cel)}
+.card.sal{opacity:0;scale:.9}
+h2{background:linear-gradient(var(--cel),var(--cel)) left bottom/0 3px no-repeat;transition:background-size .9s .2s;padding-bottom:6px}h2.on{background-size:120px 3px}
+.filtros button{transition:all .25s}.filtros button:hover{transform:translateY(-2px);border-color:var(--cel);color:var(--cel)}.filtros button.on:hover{color:#fff}
+.filtros button.on{box-shadow:0 8px 18px rgba(47,127,184,.35)}
+.fl{display:flex;gap:6px 24px;flex-wrap:wrap;align-items:center}.fl small{color:var(--gris)}
+.kpi{animation:up .7s both}.kpi:nth-child(2){animation-delay:.1s}.kpi:nth-child(3){animation-delay:.2s}.kpi:nth-child(4){animation-delay:.3s}
+.kpi{transition:transform .3s,box-shadow .3s}.kpi:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(18,57,90,.14)}
+.graf{transition:box-shadow .3s}.graf:hover{box-shadow:0 14px 34px rgba(18,57,90,.12)}
+.dr{display:grid;grid-template-columns:30px 1fr 52px;gap:10px;align-items:center;font-size:.88rem;margin:7px 0}
+.dr .t{height:16px;background:var(--linea);border-radius:99px;overflow:hidden}.dr .t i{display:block;height:100%;width:0;border-radius:99px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+#det{animation:up .5s both}
+.meter{background:var(--bg);border:1px solid var(--linea);border-radius:16px;padding:16px 22px;margin:22px 0 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.bar{flex:1;min-width:200px;height:14px;background:var(--linea);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cel),var(--verde));transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.dos li.chk{list-style:none;position:relative;padding:6px 8px 6px 34px;margin:.2em 0 .2em -20px;border-radius:10px;cursor:pointer;transition:background .25s,transform .25s}
+.dos li.chk:hover{background:var(--claro);transform:translateX(4px)}
+.dos li.chk::before{content:"";position:absolute;left:8px;top:10px;width:18px;height:18px;border:2px solid var(--cel);border-radius:50%;transition:all .35s;color:#fff;font-size:11px;line-height:14px;text-align:center;font-weight:700}
+.dos li.chk.on::before{content:"✓";background:var(--verde);border-color:var(--verde);transform:scale(1.15) rotate(360deg)}
+#top{position:fixed;right:18px;bottom:18px;z-index:9;width:44px;height:44px;border-radius:50%;border:0;background:var(--cel);color:#fff;font-size:1.2rem;cursor:pointer;opacity:0;translate:0 20px;pointer-events:none;transition:all .4s;box-shadow:0 8px 20px rgba(0,0,0,.25)}#top.v{opacity:1;translate:0 0;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rev,h1 .w{opacity:1;translate:none;transform:none}}
 </style>
 </head>
 <body>
+<div id="prog"></div><button id="top" aria-label="Subir" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <nav><div class="wrap"><span class="marca" aria-hidden="true"><i></i><i></i><i></i></span>
-<a href="#por-que">¿Por qué no hay ley?</a><a href="#marco">Marco legal</a><a href="#casos">Casos</a><a href="#proteccion">Protección</a><a href="#resultados">Resultados</a>
+<a href="#por-que">¿Por qué no hay ley?</a><a href="#marco">Marco legal</a><a href="#casos">Casos</a><a href="#proteccion">Protección</a><a href="#resultados">Resultados</a><button class="tm" id="tema" aria-label="Cambiar tema">◐</button>
 </div></nav>
 
-<header class="hero"><div class="wrap">
+<header class="hero"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="wrap">
 <span class="etq">Ciberseguridad y derecho en Guatemala</span>
 <h1>Cómo protegerse como desarrollador cuando la ley no alcanza</h1>
 <div class="pregunta"><b>Pregunta de investigación:</b> ¿Qué estrategias técnicas y jurídicas pueden implementarse para proteger a los desarrolladores de software durante la creación de aplicaciones web ante la limitada regulación de ciberseguridad existente en Guatemala?</div>
@@ -126,6 +164,7 @@ footer{background:var(--osc);color:#C9D4DD;padding:40px 0;font-size:.9rem}
 <section id="proteccion"><div class="wrap">
 <h2>Normativas y protección para los programadores</h2>
 <p class="lead">Ante la falta de una ley específica, la protección se construye en dos capas que se refuerzan entre sí.</p>
+<div class="meter"><b>Tu protección: <span id="mpct">0%</span></b><div class="bar"><i id="mbar"></i></div><small id="mtxt" style="color:var(--gris)">Haz clic en cada estrategia que ya aplicas</small></div>
 <div class="dos">
 <div><h3 style="color:var(--cel)">Estrategias técnicas</h3><ul class="lista">
 <li><b>Ciclo de desarrollo seguro (SSDLC):</b> modelado de amenazas, revisión de código y pruebas en cada entrega.</li>
@@ -155,6 +194,7 @@ footer{background:var(--osc);color:#C9D4DD;padding:40px 0;font-size:.9rem}
 <h2>Resultados de la encuesta</h2>
 <p class="lead">Respuestas de estudiantes y desarrolladores guatemaltecos en escala de 1 (muy en desacuerdo) a 5 (muy de acuerdo).</p>
 <p id="estado">Cargando datos…</p>
+<div class="fl"><div class="filtros" id="fr"><button class="on" data-v="todos">Todos</button><button data-v="Estudiante">Estudiantes</button><button data-v="dev">Desarrolladores</button></div><div class="filtros" id="fe"><button class="on" data-v="todos">Toda experiencia</button><button data-v="Menos de 1 año">&lt; 1 año</button><button data-v="1 a 3 años">1 a 3 años</button><button data-v="3 a 5 años">3 a 5 años</button></div></div>
 <div class="kpis" id="kpis"></div>
 <div class="graf"><h3>Promedio por pregunta</h3><small>Media de 1 a 5. Mientras más alto, mayor acuerdo.</small><div class="cv"><canvas id="c1"></canvas></div></div>
 <div class="graf"><h3>Distribución de respuestas</h3><small>Porcentaje de personas que eligió cada valor, por pregunta.</small><div class="cv"><canvas id="c2"></canvas></div></div>
@@ -163,6 +203,7 @@ footer{background:var(--osc);color:#C9D4DD;padding:40px 0;font-size:.9rem}
 <div class="graf"><h3>Experiencia</h3><div class="cv s"><canvas id="c4"></canvas></div></div>
 </div>
 <div class="graf"><h3>Promedio por nivel de experiencia</h3><small>Compara cómo responde cada grupo en cada pregunta.</small><div class="cv"><canvas id="c5"></canvas></div></div>
+<div class="graf"><h3>Explora cada pregunta</h3><small>Elige una pregunta para ver cómo se repartieron las respuestas.</small><div class="filtros" id="chips" style="margin:0 0 12px"></div><div id="det"></div></div>
 <h3>Análisis</h3>
 <ul class="lista hall" id="analisis"></ul>
 <p class="nota">La muestra es pequeña y por conveniencia, por lo que los resultados describen tendencias de este grupo y no representan a todos los desarrolladores del país.</p>
@@ -183,7 +224,10 @@ const RESPALDO=[[D,b,5,5,5,5,5,5,5,5],[E,a,2,1,3,2,5,5,5,5],[E,a,3,3,2,3,3,2,2,4
 /* ---- Filtros de casos ---- */
 document.getElementById('filtros').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
  document.querySelectorAll('#filtros button').forEach(x=>x.classList.toggle('on',x===t));
- document.querySelectorAll('#casos-grid .card').forEach(k=>k.classList.toggle('oculto',t.dataset.f!=='todos'&&k.dataset.o!==t.dataset.f))});
+ document.querySelectorAll('#casos-grid .card').forEach(k=>{const ver=t.dataset.f==='todos'||k.dataset.o===t.dataset.f;
+  if(ver){k.classList.remove('oculto');requestAnimationFrame(()=>requestAnimationFrame(()=>k.classList.remove('sal')))}
+  else{k.classList.add('sal');setTimeout(()=>{if(k.classList.contains('sal'))k.classList.add('oculto')},300)}})});
+
 
 /* ---- Lectura de datos ---- */
 function csv(t){const r=[];let f="",row=[],q=false;for(let i=0;i<t.length;i++){const ch=t[i];
@@ -201,15 +245,15 @@ async function cargar(){
 const avg=v=>v.reduce((s,x)=>s+x,0)/(v.length||1),f1=n=>n.toFixed(1).replace('.',',');
 const cnt=(rows,k)=>{const m={};rows.forEach(r=>m[r[k]]=(m[r[k]]||0)+1);return m};
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-let charts=[];
+let charts=[],cur=[],sel=0;
 function render(rows){
  charts.forEach(c=>c.destroy());charts=[];
  const n=rows.length,col=i=>rows.map(r=>r[2+i]);
  const med=Q.map((_,i)=>avg(col(i))),agree=Q.map((_,i)=>col(i).filter(x=>x>=4).length/n*100),dis=Q.map((_,i)=>col(i).filter(x=>x<=2).length/n*100);
  const glob=avg(med),L=Q.map((_,i)=>"P"+(i+1));
- Chart.defaults.font.family='"Public Sans",sans-serif';Chart.defaults.color=css('--gris');
+ Chart.defaults.font.family='"Public Sans",sans-serif';Chart.defaults.color=css('--gris');Chart.defaults.animation={duration:1200,easing:'easeOutQuart'};
  const grid=css('--linea'),cel=css('--cel'),verde=css('--verde');
- document.getElementById('hn').textContent=n;
+ cur=rows;
  document.getElementById('kpis').innerHTML=[[n,'respuestas'],[f1(glob)+' / 5','promedio general'],[Math.round(avg(agree))+'%','acuerdo promedio (4 y 5)'],[Math.round(avg(dis))+'%','desacuerdo promedio (1 y 2)']].map(k=>`<div class="kpi"><strong>${k[0]}</strong><span>${k[1]}</span></div>`).join('');
  const base={responsive:true,maintainAspectRatio:false};
  charts.push(new Chart('c1',{type:'bar',data:{labels:L,datasets:[{data:med.map(x=>+x.toFixed(2)),backgroundColor:med.map(x=>x>=4?verde:x>=3?cel:'#C8102E'),borderRadius:8}]},
@@ -239,10 +283,45 @@ function render(rows){
   `La muestra se compone de ${est} estudiantes (${Math.round(est/n*100)}%) y ${n-est} personas con otro rol, así que las conclusiones reflejan sobre todo la mirada de quienes están en formación.`
  ].filter(Boolean);
  document.getElementById('analisis').innerHTML=li.map(x=>`<li>${x}</li>`).join('');
+ chips();
 }
-cargar().then(({rows,vivo})=>{
- document.getElementById('estado').textContent=vivo?`Datos en vivo desde Google Sheets · ${rows.length} respuestas`:`Mostrando la copia guardada de ${rows.length} respuestas (no se pudo leer la hoja en vivo).`;
- render(rows)});
+
+let DATA=[],fR='todos',fE='todos',visto=false;
+function cu(el,to){const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
+function aplicar(){if(!visto||!DATA.length)return;
+ const r=DATA.filter(x=>(fR=='todos'||(fR=='dev'?x[0]!='Estudiante':x[0]==fR))&&(fE=='todos'||x[1]==fE));
+ const est=document.getElementById('estado');
+ if(!r.length){est.textContent='Ninguna respuesta coincide con ese filtro.';return}
+ est.textContent=(vivo?'Datos en vivo desde Google Sheets':'Copia guardada de la encuesta')+' · mostrando '+r.length+' de '+DATA.length+' respuestas';render(r)}
+let vivo=false;
+function chips(){const rows=cur,n=rows.length;
+ document.getElementById('chips').innerHTML=Q.map((_,i)=>`<button data-i="${i}" class="${i==sel?'on':''}">P${i+1}</button>`).join('');
+ const v=rows.map(r=>r[2+sel]),cols=['#C8102E','#E58A5B','#9AA7B2','#7FBBE6','#1E7B4F'];
+ document.getElementById('det').innerHTML=`<p><b>${Q[sel]}</b><br><span style="color:var(--gris)">Promedio ${f1(avg(v))} de 5 · ${Math.round(v.filter(x=>x>=4).length/n*100)}% de acuerdo · ${Math.round(v.filter(x=>x<=2).length/n*100)}% en desacuerdo</span></p>`+
+ [5,4,3,2,1].map(k=>{const c=v.filter(x=>x==k).length;return `<div class="dr"><b>${k}</b><div class="t"><i data-w="${c/n*100}" style="background:${cols[k-1]}"></i></div><span>${c} (${Math.round(c/n*100)}%)</span></div>`}).join('');
+ setTimeout(()=>document.querySelectorAll('#det .t i').forEach(e=>e.style.width=e.dataset.w+'%'),60)}
+document.getElementById('chips').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;sel=+t.dataset.i;chips()});
+[['fr',v=>fR=v],['fe',v=>fE=v]].forEach(([id,set])=>document.getElementById(id).addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.toggle('on',x===t));set(t.dataset.v);aplicar()}));
+cargar().then(({rows,vivo:v})=>{DATA=rows;vivo=v;cu(document.getElementById('hn'),rows.length);aplicar()});
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){visto=true;o.disconnect();aplicar()}},{threshold:.08}).observe(document.getElementById('resultados'));
+document.getElementById('tema').onclick=()=>{const d=document.documentElement,osc=matchMedia('(prefers-color-scheme:dark)').matches,act=d.dataset.theme||(osc?'dark':'light');d.dataset.theme=act=='dark'?'light':'dark';aplicar()};
+/* Efectos de entrada, portada y navegación */
+const h1=document.querySelector('h1');h1.innerHTML=h1.textContent.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${i*70}ms">${w}</span>`).join(' ');
+document.querySelectorAll('.stats strong').forEach(e=>{if(e.id!='hn'){const n=+e.textContent;e.textContent=0;setTimeout(()=>cu(e,n),900)}});
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target);if(x.target.classList.contains('rev'))setTimeout(()=>x.target.classList.remove('rev','on'),1700)}}),{threshold:.1});
+document.querySelectorAll('h2,.card,.dos>div,.scroll,.graf,.meter,.fl,.lead').forEach(el=>{const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*70+'ms');if(!el.matches('h2'))el.classList.add('rev');io.observe(el)});
+document.querySelectorAll('#casos-grid .card').forEach(k=>{k.addEventListener('mousemove',e=>{const r=k.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;k.style.setProperty('--rx',-y*7+'deg');k.style.setProperty('--ry',x*7+'deg');k.style.setProperty('--ty','-4px')});k.addEventListener('mouseleave',()=>['--rx','--ry','--ty'].forEach(p=>k.style.removeProperty(p)))});
+const hero=document.querySelector('.hero');hero.addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;hero.querySelectorAll('.blob').forEach((b,i)=>b.style.transform=`translate(${x*(i+1)*40}px,${y*(i+1)*40}px)`)});
+const lis=[...document.querySelectorAll('.dos li')];lis.forEach(l=>l.classList.add('chk'));
+document.querySelector('.dos').addEventListener('click',e=>{const l=e.target.closest('li');if(!l)return;l.classList.toggle('on');
+ const p=Math.round(lis.filter(x=>x.classList.contains('on')).length/lis.length*100);
+ mpct.textContent=p+'%';mbar.style.width=p+'%';mtxt.textContent=p==0?'Haz clic en cada estrategia que ya aplicas':p<40?'Estás empezando: prioriza contrato, secretos y dependencias.':p<75?'Buen avance. Revisa lo que te falta del lado jurídico y técnico.':'Protección sólida. Mantén tus bitácoras al día.'});
+const secs=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('nav a')];
+addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=scrollY/(h.scrollHeight-innerHeight)*100+'%';let c=null;secs.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.4)c=s});
+ links.forEach(a=>a.classList.toggle('on',!!c&&a.getAttribute('href')=='#'+c.id));top_.classList.toggle('v',scrollY>600)},{passive:true});
+const top_=document.getElementById('top');
+
 </script>
 </body>
 </html>
