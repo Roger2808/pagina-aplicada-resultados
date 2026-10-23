@@ -4,103 +4,78 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Protección del desarrollador ante el vacío de ciberseguridad en Guatemala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap" rel="stylesheet">
 <style>
-:root{--celeste:#4997D0;--celeste-osc:#256A9E;--celeste-claro:#EAF4FB;--verde:#1E7B4F;--rojo:#C8102E;--maiz:#E8B923;--tinta:#10202E;--gris:#5B6B7A;--linea:#E3EBF1;--sombra:0 1px 2px rgba(16,32,46,.05),0 8px 24px rgba(16,32,46,.06)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--tinta);background:#F6FAFD;line-height:1.7}
-.wrap{max-width:960px;margin:0 auto;padding:0 22px}
-nav{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;width:min(940px,calc(100% - 24px));background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.7);border-radius:99px;box-shadow:var(--sombra)}
-nav .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;padding:8px 14px;white-space:nowrap;font-size:.86rem}
-nav a{color:var(--gris);text-decoration:none;padding:6px 12px;border-radius:99px;transition:.2s}
-nav a:hover{background:var(--celeste-claro);color:var(--celeste-osc)}
-.marca{display:flex;gap:3px;margin-right:8px;flex:none}.marca i{width:7px;height:20px;border-radius:2px;background:var(--celeste)}.marca i:nth-child(2){background:#fff;border:1px solid var(--celeste)}
-header.hero{position:relative;color:#fff;padding:140px 0 100px;border-radius:0 0 56px 56px;overflow:hidden;background:radial-gradient(circle at 85% 10%,rgba(232,185,35,.35),transparent 40%),linear-gradient(135deg,#1E5F90 0%,#4997D0 60%,#7FBBE6 100%)}
-header.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.07) 0 90px,transparent 90px 180px)}
-header.hero .wrap{position:relative}
-.etq{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:99px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-h1{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.1;margin:.5em 0 .3em;letter-spacing:-.02em}
-h1 em{font-style:normal;color:var(--maiz)}
-.sub{font-size:1.1rem;max-width:640px;opacity:.95}
-.pregunta{background:rgba(255,255,255,.96);color:var(--tinta);border-radius:20px;padding:20px 24px;margin-top:30px;box-shadow:0 20px 50px rgba(0,0,0,.18);border-left:6px solid var(--verde)}
-.pregunta b{color:var(--verde)}
-.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
-.stats div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:12px 18px;min-width:140px}
-.stats strong{display:block;font-size:1.7rem;line-height:1.1}.stats span{font-size:.8rem;opacity:.9}
-section{padding:72px 0}
-section:nth-of-type(even){background:#fff}
-h2{font-size:clamp(1.5rem,3.2vw,2.1rem);margin:0 0 .4em;letter-spacing:-.01em}
-h2 span{display:inline-block;background:var(--celeste-claro);color:var(--celeste-osc);border-radius:10px;padding:2px 11px;font-size:.85rem;font-weight:700;margin-right:10px;vertical-align:middle}
-h3{margin:1.4em 0 .4em;font-size:1.1rem}
-p{margin:.6em 0}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:22px}
-.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:22px;box-shadow:var(--sombra);transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(16,32,46,.12)}
-.card h4{margin:0 0 6px;font-size:1.02rem}
-.card p{font-size:.93rem;color:#34434F;margin:.35em 0}
-#casos-grid .card{border-top:4px solid var(--celeste)}
-#casos-grid .card[data-o=gt]{border-top-color:var(--verde)}
-.tag{display:inline-block;font-size:.72rem;padding:3px 11px;border-radius:99px;background:var(--celeste-claro);color:var(--celeste-osc);margin-bottom:10px;font-weight:700}
-.tag.gt{background:#E4F3EA;color:var(--verde)}
-.scroll{overflow-x:auto;background:#fff;border:1px solid var(--linea);border-radius:18px;box-shadow:var(--sombra);margin-top:14px}
+:root{--cel:#2F7FB8;--osc:#12395A;--claro:#E8F2F9;--verde:#1E7B4F;--rojo:#C8102E;--maiz:#E8B923;--tinta:#14232F;--gris:#566674;--linea:#DCE6EE;--bg:#F6F9FB;--sf:#fff;--serif:"Source Serif 4",Georgia,serif}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--cel:#6FB3E3;--osc:#0B1B2B;--claro:#17293A;--verde:#4CC38A;--tinta:#E6EDF3;--gris:#9FB0BE;--linea:#26394A;--bg:#0E1A26;--sf:#142333}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"Public Sans",system-ui,sans-serif;color:var(--tinta);background:var(--bg);line-height:1.7}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+nav{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:10;width:min(960px,calc(100% - 24px));background:color-mix(in srgb,var(--sf) 85%,transparent);backdrop-filter:blur(14px);border:1px solid var(--linea);border-radius:99px}
+nav .wrap{display:flex;align-items:center;gap:4px;overflow-x:auto;padding:7px 14px;white-space:nowrap;font-size:.86rem}
+nav a{color:var(--gris);text-decoration:none;padding:6px 12px;border-radius:99px}
+nav a:hover,nav a:focus-visible{background:var(--claro);color:var(--cel);outline:0}
+.marca{display:flex;gap:3px;margin-right:8px;flex:none}.marca i{width:7px;height:20px;border-radius:2px;background:var(--cel)}.marca i:nth-child(2){background:#fff;border:1px solid var(--cel)}
+header.hero{color:#fff;padding:150px 0 90px;background:linear-gradient(160deg,#0F3556 0%,#1F6A9E 70%,#4997D0 100%);position:relative}
+header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:linear-gradient(90deg,#4997D0 0 33%,#fff 33% 66%,#4997D0 66%)}
+.etq{font-size:.85rem;opacity:.85}
+h1{font-family:var(--serif);font-size:clamp(2.2rem,5.6vw,3.8rem);line-height:1.08;margin:.3em 0 .5em;letter-spacing:-.015em;max-width:800px;font-weight:700}
+.pregunta{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-left:5px solid var(--maiz);border-radius:14px;padding:18px 22px;max-width:760px;font-size:1.02rem}
+.pregunta b{font-family:var(--serif);font-size:1.1rem}
+.stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:34px}
+.stats strong{display:block;font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--maiz)}.stats span{font-size:.85rem;opacity:.9}
+section{padding:76px 0}section:nth-of-type(even){background:var(--sf)}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.3rem);margin:0 0 .4em;line-height:1.2;border-left:6px solid var(--cel);padding-left:14px}
+h3{margin:1.5em 0 .4em;font-size:1.1rem}p{margin:.6em 0}
+.lead{max-width:680px;color:var(--gris)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-top:22px}
+.card{background:var(--sf);border:1px solid var(--linea);border-radius:14px;padding:22px}
+section:nth-of-type(even) .card{background:var(--bg)}
+.card h4{margin:0 0 6px;font-size:1.02rem}.card p{font-size:.93rem;margin:.35em 0}
+#casos-grid .card{border-top:4px solid var(--cel)}#casos-grid .card[data-o=gt]{border-top-color:var(--verde)}
+.tag{display:inline-block;font-size:.76rem;padding:3px 11px;border-radius:99px;background:var(--claro);color:var(--cel);margin-bottom:10px;font-weight:600}.tag.gt{color:var(--verde)}
+.scroll{overflow-x:auto;background:var(--sf);border:1px solid var(--linea);border-radius:14px;margin-top:14px}
 table{width:100%;border-collapse:collapse;font-size:.92rem}
-th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--linea);vertical-align:top}
-tr:last-child td{border-bottom:0}
-th{background:var(--celeste-claro);color:var(--celeste-osc);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em}
-.nota{font-size:.86rem;color:#6B5A12;border-left:4px solid var(--maiz);padding:10px 16px;margin-top:18px;background:#FFF9E3;border-radius:0 12px 12px 0}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--linea);vertical-align:top}tr:last-child td{border-bottom:0}
+th{background:var(--claro);color:var(--cel);font-size:.9rem}
 .filtros{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
-.filtros button{border:1px solid var(--linea);background:#fff;padding:8px 20px;border-radius:99px;cursor:pointer;font:inherit;font-size:.88rem;color:var(--gris);transition:.2s}
-.filtros button.on{background:linear-gradient(135deg,var(--celeste),var(--celeste-osc));border-color:transparent;color:#fff;box-shadow:0 6px 16px rgba(73,151,208,.4)}
-ul.lista{padding-left:20px}ul.lista li{margin:.45em 0}ul.lista li::marker{color:var(--celeste)}
+.filtros button{border:1px solid var(--linea);background:var(--sf);padding:8px 20px;border-radius:99px;cursor:pointer;font:inherit;font-size:.88rem;color:var(--gris)}
+.filtros button.on{background:var(--cel);border-color:var(--cel);color:#fff}
+ul.lista{padding-left:20px}ul.lista li{margin:.45em 0}ul.lista li::marker{color:var(--cel)}
 .dos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));margin-top:20px}
-.dos>div{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:10px 26px 18px;box-shadow:var(--sombra);border-top:5px solid var(--celeste)}
+.dos>div{background:var(--bg);border:1px solid var(--linea);border-radius:16px;padding:6px 26px 18px;border-top:5px solid var(--cel)}
 .dos>div:nth-child(2){border-top-color:var(--verde)}.dos>div:nth-child(2) ul.lista li::marker{color:var(--verde)}
-.dos h3{margin-top:.9em}
-form fieldset{border:1px solid var(--linea);border-radius:18px;margin:16px 0;padding:18px 22px;background:#fff;box-shadow:var(--sombra)}
-form legend{padding:0 8px;font-weight:600;font-size:.96rem}
-.escala{display:flex;gap:8px;margin-top:8px}
-.escala label{flex:1;text-align:center;cursor:pointer}
-.escala input{position:absolute;opacity:0}
-.escala span{display:block;border:1.5px solid var(--linea);border-radius:12px;padding:10px 0;font-weight:600;color:var(--gris);transition:.15s;background:#fff}
-.escala label:hover span{border-color:var(--celeste);color:var(--celeste-osc)}
-.escala input:checked+span{background:linear-gradient(135deg,var(--celeste),var(--celeste-osc));color:#fff;border-color:transparent;transform:scale(1.05);box-shadow:0 6px 14px rgba(73,151,208,.4)}
-.escala input:focus-visible+span{outline:2px solid var(--verde);outline-offset:2px}
-.extremos{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gris);margin-top:6px}
-select{font:inherit;padding:11px;border:1.5px solid var(--linea);border-radius:12px;width:100%;margin-top:4px;background:#fff}
-#prog{position:sticky;top:76px;z-index:4;height:6px;background:var(--linea);border-radius:99px;overflow:hidden;margin:18px 0}
-#prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--celeste),var(--verde));transition:width .3s}
-.btn{background:linear-gradient(135deg,var(--verde),#2BA06B);color:#fff;border:0;padding:15px 34px;border-radius:99px;font:inherit;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(30,123,79,.35);transition:.2s}
-.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.6;cursor:wait;transform:none}
-.err{color:var(--rojo);font-size:.92rem;min-height:1.3em}
-#gracias{display:none;text-align:center;background:#fff;border:1px solid var(--linea);border-radius:24px;padding:50px 24px;box-shadow:var(--sombra)}
-#gracias h3{font-size:1.6rem;margin:.2em 0}
-.check{width:64px;height:64px;border-radius:50%;background:var(--verde);color:#fff;font-size:2rem;display:grid;place-items:center;margin:0 auto 10px}
-footer{position:relative;background:linear-gradient(160deg,#10202E,#1B3347);color:#C9D4DD;padding:54px 0 36px;font-size:.9rem;margin-top:0}
-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--celeste) 0 33%,#fff 33% 66%,var(--celeste) 66%)}
-footer h5{margin:0 0 14px;color:#fff;font-size:1rem}
-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-footer li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:10px 16px;border-radius:12px}
-footer small{display:block;margin-top:24px;color:#8FA1B0}
+.kpis{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:26px 0}
+.kpi{background:var(--bg);border:1px solid var(--linea);border-radius:14px;padding:16px 18px}
+.kpi strong{display:block;font-family:var(--serif);font-size:2.1rem;line-height:1.1;color:var(--cel)}.kpi span{font-size:.84rem;color:var(--gris)}
+.graf{background:var(--bg);border:1px solid var(--linea);border-radius:16px;padding:20px 22px;margin:18px 0}
+.graf h3{margin:0 0 2px}.graf small{color:var(--gris);display:block;margin-bottom:10px}
+.cv{position:relative;height:340px}.cv.s{height:260px}
+.dosg{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.hall{border-left:4px solid var(--maiz);background:color-mix(in srgb,var(--maiz) 14%,var(--sf));border-radius:0 12px 12px 0;padding:6px 18px;margin-top:22px}
+.hall li{margin:.5em 0}
+.nota{font-size:.84rem;color:var(--gris);margin-top:14px}
+#estado{font-size:.84rem;color:var(--gris)}
+footer{background:var(--osc);color:#C9D4DD;padding:40px 0;font-size:.9rem}
 .oculto{display:none!important}
-.rev{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rev.on{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
-@media(max-width:560px){.escala{gap:5px}header.hero{padding:120px 0 80px;border-radius:0 0 32px 32px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <nav><div class="wrap"><span class="marca" aria-hidden="true"><i></i><i></i><i></i></span>
-<a href="#por-que">¿Por qué no hay ley?</a><a href="#marco">Marco legal</a><a href="#casos">Casos</a><a href="#proteccion">Protección</a>
+<a href="#por-que">¿Por qué no hay ley?</a><a href="#marco">Marco legal</a><a href="#casos">Casos</a><a href="#proteccion">Protección</a><a href="#resultados">Resultados</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
-<span class="etq">Ciberseguridad y derecho · Guatemala</span>
-<h1>Cómo protegerse como desarrollador <em>cuando la ley no alcanza</em></h1>
+<span class="etq">Ciberseguridad y derecho en Guatemala</span>
+<h1>Cómo protegerse como desarrollador cuando la ley no alcanza</h1>
 <div class="pregunta"><b>Pregunta de investigación:</b> ¿Qué estrategias técnicas y jurídicas pueden implementarse para proteger a los desarrolladores de software durante la creación de aplicaciones web ante la limitada regulación de ciberseguridad existente en Guatemala?</div>
-<div class="stats"><div><strong>0</strong><span>leyes integrales de ciberseguridad</span></div><div><strong>7</strong><span>artículos penales informáticos (274 A–G)</span></div><div><strong>9</strong><span>casos analizados</span></div></div>
+<div class="stats"><div><strong>0</strong><span>leyes integrales de ciberseguridad</span></div><div><strong>7</strong><span>artículos penales informáticos (274 A–G)</span></div><div><strong>9</strong><span>casos analizados</span></div><div><strong id="hn">–</strong><span>personas encuestadas</span></div></div>
 </div></header>
 
 <section id="por-que"><div class="wrap">
-<h2><span>01</span>¿Por qué Guatemala no tiene una ley de ciberseguridad?</h2>
+<h2>¿Por qué Guatemala no tiene una ley de ciberseguridad?</h2>
 <p>Guatemala no cuenta con una ley integral de ciberseguridad. Lo que existe son normas dispersas (penales, de derecho de autor y de comercio electrónico) que no fueron pensadas para el desarrollo de software moderno. Las razones que suelen señalarse son varias:</p>
 <div class="grid">
 <div class="card"><h4>Agenda legislativa saturada</h4><p>Las iniciativas tecnológicas compiten con temas considerados más urgentes y suelen quedar detenidas en comisiones.</p></div>
@@ -111,7 +86,7 @@ footer small{display:block;margin-top:24px;color:#8FA1B0}
 </div></section>
 
 <section id="marco"><div class="wrap">
-<h2><span>02</span>Leyes vigentes e iniciativas más avanzadas</h2>
+<h2>Leyes vigentes e iniciativas más avanzadas</h2>
 <h3>Normas que hoy se aplican</h3>
 <div class="scroll"><table>
 <tr><th>Norma</th><th>Relevancia para quien desarrolla</th></tr>
@@ -132,11 +107,9 @@ footer small{display:block;margin-top:24px;color:#8FA1B0}
 </div></section>
 
 <section id="casos"><div class="wrap">
-<h2><span>03</span>Casos de estudio</h2>
-<p>Cada caso deja una lección práctica para quien programa aplicaciones web.</p>
-<div class="filtros" id="filtros">
-<button class="on" data-f="todos">Todos</button><button data-f="gt">Guatemala</button><button data-f="int">Internacional</button>
-</div>
+<h2>Casos de estudio</h2>
+<p class="lead">Cada caso deja una lección práctica para quien programa aplicaciones web.</p>
+<div class="filtros" id="filtros"><button class="on" data-f="todos">Todos</button><button data-f="gt">Guatemala</button><button data-f="int">Internacional</button></div>
 <div class="grid" id="casos-grid">
 <article class="card" data-o="gt"><span class="tag gt">Guatemala · contexto</span><h4>Ataques y filtraciones a entidades públicas y privadas</h4><p>En los últimos años se han reportado incidentes en sitios y sistemas de instituciones y empresas guatemaltecas. Al no haber obligación legal de notificar incidentes, muchos no se investigan a fondo.</p><p><b>Lección:</b> documenta tu diligencia técnica; sin ley, tu bitácora es tu mejor defensa.</p></article>
 <article class="card" data-o="gt"><span class="tag gt">Guatemala · marco penal</span><h4>Delitos informáticos con tipos penales de 1996</h4><p>Los arts. 274 "A"–"G" no contemplan figuras como el acceso no autorizado a sistemas como tal, el ransomware o el robo de credenciales, lo que deja vacíos al perseguir conductas actuales.</p><p><b>Lección:</b> el vacío también protege mal a la víctima y deja ambiguo hasta dónde llega la responsabilidad del desarrollador.</p></article>
@@ -151,12 +124,10 @@ footer small{display:block;margin-top:24px;color:#8FA1B0}
 </div></section>
 
 <section id="proteccion"><div class="wrap">
-<h2><span>04</span>Normativas y protección para los programadores</h2>
-<p>Ante la falta de una ley específica, la protección se construye en dos capas que se refuerzan entre sí.</p>
+<h2>Normativas y protección para los programadores</h2>
+<p class="lead">Ante la falta de una ley específica, la protección se construye en dos capas que se refuerzan entre sí.</p>
 <div class="dos">
-<div>
-<h3 style="color:var(--celeste)">Estrategias técnicas</h3>
-<ul class="lista">
+<div><h3 style="color:var(--cel)">Estrategias técnicas</h3><ul class="lista">
 <li><b>Ciclo de desarrollo seguro (SSDLC):</b> modelado de amenazas, revisión de código y pruebas en cada entrega.</li>
 <li><b>OWASP Top 10 y ASVS</b> como estándar mínimo verificable para aplicaciones web.</li>
 <li><b>Gestión de dependencias:</b> escaneo automático, parches y SBOM.</li>
@@ -165,12 +136,8 @@ footer small{display:block;margin-top:24px;color:#8FA1B0}
 <li><b>Autenticación robusta:</b> hash de contraseñas con algoritmos modernos y MFA.</li>
 <li><b>Registros y bitácoras</b> de decisiones de seguridad, pruebas y parches, como evidencia de diligencia.</li>
 <li><b>Entornos separados</b> y copias de seguridad probadas.</li>
-<li><b>Marcos de referencia:</b> ISO/IEC 27001 y NIST CSF para ordenar controles.</li>
-</ul>
-</div>
-<div>
-<h3 style="color:var(--verde)">Estrategias jurídicas</h3>
-<ul class="lista">
+<li><b>Marcos de referencia:</b> ISO/IEC 27001 y NIST CSF para ordenar controles.</li></ul></div>
+<div><h3 style="color:var(--verde)">Estrategias jurídicas</h3><ul class="lista">
 <li><b>Contrato de desarrollo</b> con alcance definido, criterios de aceptación y qué queda fuera de tu responsabilidad.</li>
 <li><b>Limitación de responsabilidad</b> y tope de indemnización, dentro de lo que permite el derecho civil.</li>
 <li><b>Responsabilidades del cliente</b> (hosting, accesos, actualizaciones, uso de contraseñas) escritas expresamente.</li>
@@ -180,20 +147,102 @@ footer small{display:block;margin-top:24px;color:#8FA1B0}
 <li><b>NDA y acuerdo de tratamiento de datos</b> cuando manejes información personal.</li>
 <li><b>Política de divulgación responsable</b> y protocolo de notificación de incidentes.</li>
 <li><b>Seguro de responsabilidad civil o ciber</b> y formalización como empresa o gremial.</li>
-<li><b>Firma electrónica</b> (Decreto 47-2008) para dejar rastro verificable de acuerdos.</li>
-</ul>
-</div>
+<li><b>Firma electrónica</b> (Decreto 47-2008) para dejar rastro verificable de acuerdos.</li></ul></div>
 </div>
 </div></section>
 
+<section id="resultados"><div class="wrap">
+<h2>Resultados de la encuesta</h2>
+<p class="lead">Respuestas de estudiantes y desarrolladores guatemaltecos en escala de 1 (muy en desacuerdo) a 5 (muy de acuerdo).</p>
+<p id="estado">Cargando datos…</p>
+<div class="kpis" id="kpis"></div>
+<div class="graf"><h3>Promedio por pregunta</h3><small>Media de 1 a 5. Mientras más alto, mayor acuerdo.</small><div class="cv"><canvas id="c1"></canvas></div></div>
+<div class="graf"><h3>Distribución de respuestas</h3><small>Porcentaje de personas que eligió cada valor, por pregunta.</small><div class="cv"><canvas id="c2"></canvas></div></div>
+<div class="dosg">
+<div class="graf"><h3>Rol</h3><div class="cv s"><canvas id="c3"></canvas></div></div>
+<div class="graf"><h3>Experiencia</h3><div class="cv s"><canvas id="c4"></canvas></div></div>
+</div>
+<div class="graf"><h3>Promedio por nivel de experiencia</h3><small>Compara cómo responde cada grupo en cada pregunta.</small><div class="cv"><canvas id="c5"></canvas></div></div>
+<h3>Análisis</h3>
+<ul class="lista hall" id="analisis"></ul>
+<p class="nota">La muestra es pequeña y por conveniencia, por lo que los resultados describen tendencias de este grupo y no representan a todos los desarrolladores del país.</p>
+</div></section>
 
+<footer><div class="wrap">Investigación sobre ciberseguridad y protección legal del desarrollador en Guatemala. Los datos de la encuesta se leen en vivo desde Google Sheets.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-document.getElementById('filtros').addEventListener('click',e=>{
-  const b=e.target.closest('button'); if(!b)return;
-  document.querySelectorAll('#filtros button').forEach(x=>x.classList.toggle('on',x===b));
-  document.querySelectorAll('#casos-grid .card').forEach(c=>c.classList.toggle('oculto',b.dataset.f!=='todos'&&c.dataset.o!==b.dataset.f));
-});
-const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.08});
-document.querySelectorAll('.card,.dos>div,.scroll').forEach(el=>{el.classList.add('rev');io.observe(el)});
+/* ====== CONFIGURA AQUÍ ====== */
+const SHEET_ID="1U2Inul5d-WnbMf6MNLKvVmYPejqMo-UFUtBOxG3X3Ss";
+// Cambia estos textos por el enunciado real de cada pregunta de tu encuesta:
+const Q=["Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5","Pregunta 6","Pregunta 7","Pregunta 8"];
+/* Copia de respaldo (si la hoja no responde): [rol, experiencia, P1..P8] */
+const E="Estudiante",D="Desarrollador/a independiente",a="Menos de 1 año",b="1 a 3 años",c="3 a 5 años";
+const RESPALDO=[[D,b,5,5,5,5,5,5,5,5],[E,a,2,1,3,2,5,5,5,5],[E,a,3,3,2,3,3,2,2,4],[E,c,3,1,2,1,1,5,5,5],[E,a,1,1,1,1,1,1,5,4],[D,b,1,2,3,4,3,5,5,5],[E,a,1,2,4,3,5,5,5,4],[E,b,2,3,4,3,4,4,4,3],[E,b,3,1,5,4,4,5,5,5],[E,c,3,1,3,3,4,4,5,5],[E,c,5,1,3,2,1,3,4,5],[E,c,3,1,4,3,4,3,5,4],[E,b,1,1,1,4,4,5,5,5],[E,c,3,1,3,3,2,4,5,3],[D,b,2,1,3,3,4,4,5,5],[E,c,1,2,2,2,1,4,4,5],[E,a,1,1,3,1,2,5,5,5]];
+
+/* ---- Filtros de casos ---- */
+document.getElementById('filtros').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ document.querySelectorAll('#filtros button').forEach(x=>x.classList.toggle('on',x===t));
+ document.querySelectorAll('#casos-grid .card').forEach(k=>k.classList.toggle('oculto',t.dataset.f!=='todos'&&k.dataset.o!==t.dataset.f))});
+
+/* ---- Lectura de datos ---- */
+function csv(t){const r=[];let f="",row=[],q=false;for(let i=0;i<t.length;i++){const ch=t[i];
+ if(q){if(ch=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=ch}
+ else if(ch=='"')q=true;else if(ch==','){row.push(f);f=""}else if(ch=='\n'){row.push(f);r.push(row);row=[];f=""}else if(ch!='\r')f+=ch}
+ row.push(f);r.push(row);return r}
+async function cargar(){
+ try{const r=await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv`);if(!r.ok)throw 0;
+  const rows=csv(await r.text()).slice(1).map(x=>[x[1],x[2],...x.slice(3,11).map(Number)])
+   .filter(x=>x[0]&&x.slice(2).every(n=>n>=1&&n<=5));
+  if(!rows.length)throw 0;return{rows,vivo:true}}
+ catch(e){return{rows:RESPALDO,vivo:false}}}
+
+/* ---- Utilidades ---- */
+const avg=v=>v.reduce((s,x)=>s+x,0)/(v.length||1),f1=n=>n.toFixed(1).replace('.',',');
+const cnt=(rows,k)=>{const m={};rows.forEach(r=>m[r[k]]=(m[r[k]]||0)+1);return m};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let charts=[];
+function render(rows){
+ charts.forEach(c=>c.destroy());charts=[];
+ const n=rows.length,col=i=>rows.map(r=>r[2+i]);
+ const med=Q.map((_,i)=>avg(col(i))),agree=Q.map((_,i)=>col(i).filter(x=>x>=4).length/n*100),dis=Q.map((_,i)=>col(i).filter(x=>x<=2).length/n*100);
+ const glob=avg(med),L=Q.map((_,i)=>"P"+(i+1));
+ Chart.defaults.font.family='"Public Sans",sans-serif';Chart.defaults.color=css('--gris');
+ const grid=css('--linea'),cel=css('--cel'),verde=css('--verde');
+ document.getElementById('hn').textContent=n;
+ document.getElementById('kpis').innerHTML=[[n,'respuestas'],[f1(glob)+' / 5','promedio general'],[Math.round(avg(agree))+'%','acuerdo promedio (4 y 5)'],[Math.round(avg(dis))+'%','desacuerdo promedio (1 y 2)']].map(k=>`<div class="kpi"><strong>${k[0]}</strong><span>${k[1]}</span></div>`).join('');
+ const base={responsive:true,maintainAspectRatio:false};
+ charts.push(new Chart('c1',{type:'bar',data:{labels:L,datasets:[{data:med.map(x=>+x.toFixed(2)),backgroundColor:med.map(x=>x>=4?verde:x>=3?cel:'#C8102E'),borderRadius:8}]},
+  options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{title:i=>Q[i[0].dataIndex]}}},scales:{y:{min:0,max:5,grid:{color:grid}},x:{grid:{display:false}}}}}));
+ const cols=['#C8102E','#E58A5B','#D9D9D9','#7FBBE6','#1E7B4F'];
+ charts.push(new Chart('c2',{type:'bar',data:{labels:L,datasets:[1,2,3,4,5].map((v,j)=>({label:String(v),backgroundColor:cols[j],data:Q.map((_,i)=>+(col(i).filter(x=>x==v).length/n*100).toFixed(1))}))},
+  options:{...base,indexAxis:'y',plugins:{tooltip:{callbacks:{title:i=>Q[i[0].dataIndex],label:i=>`Valor ${i.dataset.label}: ${i.raw}%`}}},scales:{x:{stacked:true,max:100,grid:{color:grid},ticks:{callback:v=>v+'%'}},y:{stacked:true,grid:{display:false}}}}}));
+ const rol=cnt(rows,0),exp=cnt(rows,1),pal=['#2F7FB8','#E8B923','#1E7B4F','#7FBBE6'];
+ charts.push(new Chart('c3',{type:'doughnut',data:{labels:Object.keys(rol),datasets:[{data:Object.values(rol),backgroundColor:pal,borderWidth:0}]},options:{...base,cutout:'62%',plugins:{legend:{position:'bottom'}}}}));
+ const ord=["Menos de 1 año","1 a 3 años","3 a 5 años"].filter(k=>exp[k]);Object.keys(exp).forEach(k=>{if(!ord.includes(k))ord.push(k)});
+ charts.push(new Chart('c4',{type:'bar',data:{labels:ord,datasets:[{data:ord.map(k=>exp[k]),backgroundColor:cel,borderRadius:8}]},options:{...base,plugins:{legend:{display:false}},scales:{y:{ticks:{stepSize:1},grid:{color:grid}},x:{grid:{display:false}}}}}));
+ charts.push(new Chart('c5',{type:'bar',data:{labels:L,datasets:ord.map((k,j)=>({label:k+' (n='+exp[k]+')',backgroundColor:['#7FBBE6','#2F7FB8','#12395A'][j%3],borderRadius:5,data:Q.map((_,i)=>+avg(rows.filter(r=>r[1]==k).map(r=>r[2+i])).toFixed(2))}))},
+  options:{...base,plugins:{tooltip:{callbacks:{title:i=>Q[i[0].dataIndex]}}},scales:{y:{min:0,max:5,grid:{color:grid}},x:{grid:{display:false}}}}}));
+ /* Análisis automático */
+ const ix=[...med.keys()].sort((p,q)=>med[q]-med[p]),top=ix[0],bot=ix[ix.length-1],altos=ix.filter(i=>med[i]>=4).map(i=>"P"+(i+1)),bajos=ix.filter(i=>med[i]<3).map(i=>"P"+(i+1));
+ const est=rows.filter(r=>r[0]=="Estudiante").length,gm=k=>avg(rows.filter(r=>r[1]==k).map(r=>avg(r.slice(2))));
+ const ge=ord.map(k=>[k,gm(k)]).sort((p,q)=>q[1]-p[1]);
+ const dif=[...med.keys()].map(i=>[i,Math.max(...col(i).map(x=>Math.abs(x-med[i])))]);
+ const pol=[...med.keys()].sort((p,q)=>{const sd=i=>Math.sqrt(avg(col(i).map(x=>(x-med[i])**2)));return sd(q)-sd(p)})[0];
+ const li=[
+  `El promedio general es <b>${f1(glob)} de 5</b>. En promedio, ${Math.round(avg(agree))}% de las respuestas fueron de acuerdo (4 o 5) y ${Math.round(avg(dis))}% de desacuerdo (1 o 2).`,
+  `La pregunta con mayor acuerdo es <b>P${top+1}</b> (${f1(med[top])}; ${Math.round(agree[top])}% de acuerdo) y la de menor acuerdo es <b>P${bot+1}</b> (${f1(med[bot])}; ${Math.round(dis[bot])}% en desacuerdo).`,
+  altos.length?`Las preguntas con promedio de 4 o más (${altos.join(', ')}) muestran un consenso claro en el grupo.`:'Ninguna pregunta alcanza un promedio de 4, lo que indica opiniones repartidas.',
+  bajos.length?`Las preguntas con promedio menor a 3 (${bajos.join(', ')}) revelan áreas donde el grupo se inclina al desacuerdo o a la falta de práctica.`:'Ninguna pregunta queda por debajo de 3.',
+  `La pregunta con respuestas más dispersas es <b>P${pol+1}</b>: aquí el grupo está más dividido.`,
+  ord.length>1?`Por experiencia, el grupo de <b>${ge[0][0]}</b> tiene el promedio más alto (${f1(ge[0][1])}) y el de <b>${ge[ge.length-1][0]}</b> el más bajo (${f1(ge[ge.length-1][1])}).`:'',
+  `La muestra se compone de ${est} estudiantes (${Math.round(est/n*100)}%) y ${n-est} personas con otro rol, así que las conclusiones reflejan sobre todo la mirada de quienes están en formación.`
+ ].filter(Boolean);
+ document.getElementById('analisis').innerHTML=li.map(x=>`<li>${x}</li>`).join('');
+}
+cargar().then(({rows,vivo})=>{
+ document.getElementById('estado').textContent=vivo?`Datos en vivo desde Google Sheets · ${rows.length} respuestas`:`Mostrando la copia guardada de ${rows.length} respuestas (no se pudo leer la hoja en vivo).`;
+ render(rows)});
 </script>
-</body></html>
+</body>
+</html>
